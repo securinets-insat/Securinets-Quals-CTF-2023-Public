@@ -1,0 +1,13 @@
+version: '2.4'
+services:
+  admservices:
+    build: .
+    ports:
+      - 4000:1234
+    read_only: true
+    privileged: true
+    cap_drop:
+      - all
+
+    mem_limit: 20M
+    restart: on-failure

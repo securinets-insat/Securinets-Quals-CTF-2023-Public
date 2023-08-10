@@ -1,0 +1,8 @@
+#!/bin/sh
+# SPDX-License-Identifier: GPL-2.0-only
+
+if [ ! -f $OPKG_INTERCEPT_DIR/ldconfig ]; then
+  echo "ldconfig" > $OPKG_INTERCEPT_DIR/ldconfig
+  chmod +x $OPKG_INTERCEPT_DIR/ldconfig
+fi
+
