@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript" src="purify.js"></script>
+</head>
+
+<body>
+    <script>
+        const endpointUrl = 'https://testnos.e-health.software/securinets';
+
+        fetch(endpointUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Parsed JSON data:', data);
+                var paragraphElement = document.createElement('p');
+                var text = data['message']
+                //purify text
+                const clean = DOMPurify.sanitize(text)
+                var textNode = document.createTextNode(clean);
+                paragraphElement.appendChild(textNode);
+                document.body.appendChild(paragraphElement);
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+            });
+
+    </script>
+</body>
+
+</html>

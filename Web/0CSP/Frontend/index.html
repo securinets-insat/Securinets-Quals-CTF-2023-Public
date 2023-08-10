@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width" />
+
+  <title>Nzeros Escape</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <ul class="nav-list">
+      <li class="nav-item"><a href="/helloworld.html" class="nav-link">Hello World</a></li>
+      <li class="nav-item"><a href="/securinets.html" class="nav-link">Securinets</a></li>
+      <li class="nav-item"><a href="/index.html" class="nav-link">Home</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <form action="https://testnos.e-health.software/reporturl" method="post" class="report-form">
+      <label for="url" class="form-label">Report URL:</label>
+      <input type="text" id="url" name="link" class="form-input" placeholder="https://nzeros.escape.me/" required>
+      <button type="submit" class="form-button">Submit</button>
+    </form>
+  </div>
+  <script>
+
+    const ServiceWorkerReg = async () => {
+      console.log("[ServiceWorkerReg] enter")
+      if ('serviceWorker' in navigator) {
+        console.log("[ServiceWorkerReg] serviceworker in navigator")
+        try {
+          const params = new URLSearchParams(window.location.search);
+          console.log("[ServiceWorkerReg] registering")
+
+          const reg = await navigator.serviceWorker.register(
+            `sw.js?user=${params.get("user") ?? 'stranger'}`,
+            {
+              scope: './',
+            }
+          );
+          loaded = true;
+          console.log("[ServiceWorkerReg] registered")
+          console.log(reg)
+          if (reg.installing) {
+            console.log('Service worker installing');
+          } else if (reg.waiting) {
+            console.log('Service worker installed');
+          } else if (reg.active) {
+            console.log('Service worker active');
+          }
+        } catch (error) {
+          console.error(`Registration failed with ${error}`);
+        }
+      }
+      else {
+        console.log("browser doesn't support sw")
+      }
+    };
+
+    console.log("app.js")
+    ServiceWorkerReg();
+    var loaded;
+  </script>
+  <!-- <script type="module" src="app.js"></script> -->
+</body>
+
+</html>

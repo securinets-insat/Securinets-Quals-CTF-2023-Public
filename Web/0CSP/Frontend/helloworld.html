@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript" src="purify.js"></script>
+</head>
+
+<body>
+
+    <script>
+        const endpointUrl = 'https://testnos.e-health.software/GetToken';
+
+        fetch(endpointUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Parsed JSON data:', data);
+                var token = data['token']
+                var user = data['user']
+                //const clean = DOMPurify.sanitize(user)
+                document.body.innerHTML = "hey " + user + " this is your token: " + token
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+            });
+
+    </script>
+</body>
+
+</html>
