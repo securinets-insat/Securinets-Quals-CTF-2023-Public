@@ -11,6 +11,8 @@
 * Finally you get the circuit's unitary matrix and get the smallest eigenvalue for that matrix
 * It can be done simpler by simulating the gates found from decomposing the Hamiltonian into its Pauli form and going from there but this code can help with almost any Hamiltonian, you can also find a lot of Hamiltonian simulation codes if you search.
 
+[File](./Solve.ipynb)
+
 ## Description
 
 >While on a mission, one of our teams discovered a weird suitecase locked with a 7-character password. The object had this matrix carved on its side, barely readable:
