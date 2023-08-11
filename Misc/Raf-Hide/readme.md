@@ -6,6 +6,9 @@ Flag format: Securinets{Secrect}
 
 > In this Challenge you will get a go binary and a video! I will not explain how to reverse the binary. The main Idea is to understand what the binary do and extract the data from the video
 
+Binary: [Download](./rafhide)
+Video: [Download](https://drive.google.com/file/d/1k3BicVHHjdzNQV_7jfgG1eaWY8G-FrGy/view?usp=sharing)
+
 This is a python version of what the binary can do : 
 
 ```python
